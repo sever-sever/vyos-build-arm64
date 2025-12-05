@@ -1,0 +1,28 @@
+name: smoketest
+
+on:
+  workflow_dispatch:
+
+# env:
+#   REGISTRY: ghcr.io
+#   IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm64
+    # runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout remote repo & branch
+        uses: actions/checkout@v4
+
+      - name: Check arch
+        run: |
+          uname -a
+          uname -m
+          free -mh
+          lscpu
