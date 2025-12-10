@@ -20,22 +20,24 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
+        with:
+          path: vyos-build-arm64
 
       - name: Check
         run: |
           ls -lah
-          ls -l vyos-build
           ls -l ../
           
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
         with:
-          repository: vyos/vyos-build
+          repository: sever-sever/vyos-build
+          ref: T8065
+          path: vyos-build
 
       - name: Check arch
         run: |
           ls -lah
-          ls vyos-build
           ls ../
           uname -a
           uname -m
