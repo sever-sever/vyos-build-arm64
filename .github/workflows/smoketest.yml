@@ -39,6 +39,11 @@ jobs:
         run: |
           rsync -avh vyos-build-arm64/data/build-flavors/ vyos-build/data/build-flavors/
 
+      - name: Install smoketest dependencies
+        run: |
+          apt-get update
+          apt-get install -y python3-pexpect
+
       - name: Build VyOS image
         working-directory: vyos-build
         run: |
