@@ -44,6 +44,11 @@ jobs:
         run: |
           ./build-vyos-image --architecture arm64 generic-arm64
 
+      - name: Check .iso file
+        working-directory: vyos-build
+        run: |
+          ls -lah build
+
       - name: Run smoketests
         working-directory: vyos-build
         run: |
