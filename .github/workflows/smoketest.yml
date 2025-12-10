@@ -42,7 +42,7 @@ jobs:
       - name: Install smoketest dependencies
         run: |
           apt-get update
-          apt-get install -y python3-pexpect
+          apt-get install -y python3-pexpect qemu-system-aarch64 qemu-efi-aarch64
 
       - name: Build VyOS image
         working-directory: vyos-build
