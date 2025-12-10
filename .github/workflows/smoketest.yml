@@ -23,10 +23,10 @@ jobs:
         with:
           path: vyos-build-arm64
 
-      - name: Check
-        run: |
-          ls -lah
-          ls -l ../
+      # - name: Check
+      #   run: |
+      #     ls -lah
+      #     ls -l ../
           
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
@@ -35,11 +35,16 @@ jobs:
           ref: T8065
           path: vyos-build
 
-      - name: Check arch
+      - name: Copy flavors to vyos-build
         run: |
-          ls -lah
-          ls ../
-          uname -a
-          uname -m
-          free -mh
-          lscpu
+          rsync -avh vyos-build-arm64/data/build-flavors/ vyos-build/data/build-flavors/
+
+      - name: Build VyOS image
+        working-directory: vyos-build
+        run: |
+          ./build-vyos-image --architecture arm64 generic-arm64
+
+      - name: Run smoketests
+        working-directory: vyos-build
+        run: |
+          sudo make test-no-interfaces-no-vpp | tee tmp.log
