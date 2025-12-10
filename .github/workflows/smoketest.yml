@@ -57,4 +57,6 @@ jobs:
       - name: Run smoketests
         working-directory: vyos-build
         run: |
-          sudo make test-no-interfaces-no-vpp | tee tmp.log
+          arch="arm64"
+          # sudo make test-no-interfaces-no-vpp | tee tmp.log
+          scripts/check-qemu-install --debug --configd --smoketest --uefi --no-interfaces --no-vpp --memory 2 --arch $(arch) build/live-image-$(arch).hybrid.iso
