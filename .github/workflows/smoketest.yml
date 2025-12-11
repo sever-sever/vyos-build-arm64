@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 
 env:
+  ARCH: arm64
   REGISTRY: ghcr.io
   IMAGE_NAME: vyos-current-arm64
 
@@ -22,12 +23,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           path: vyos-build-arm64
-
-      # - name: Check
-      #   run: |
-      #     ls -lah
-      #     ls -l ../
-          
+         
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
         with:
@@ -38,11 +34,6 @@ jobs:
       - name: Copy flavors to vyos-build
         run: |
           rsync -avh vyos-build-arm64/data/build-flavors/ vyos-build/data/build-flavors/
-
-      - name: Install smoketest dependencies
-        run: |
-          apt-get update
-          apt-get install -y python3-pexpect qemu-system-aarch64 qemu-efi-aarch64
 
       - name: Build VyOS image
         working-directory: vyos-build
