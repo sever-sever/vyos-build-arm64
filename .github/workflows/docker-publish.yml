@@ -48,12 +48,20 @@ jobs:
 
       - name: Get repository name
         run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
-        
+
+      # Do not work for ARM
+      # - name: Delete old images
+      #   uses: snok/container-retention-policy@v3.0.0
+      #   with:
+      #     image-names: ${{ env.REPOSITORY_NAME }}
+      #     cut-off: 2w 3d
+      #     keep-n-most-recent: 1
+      #     account: user
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Delete old images
-        uses: snok/container-retention-policy@v3.0.0
+        uses: actions/delete-package-versions@v5
         with:
-          image-names: ${{ env.REPOSITORY_NAME }}
-          cut-off: 2w 3d
-          keep-n-most-recent: 1
-          account: user
-          token: ${{ secrets.GITHUB_TOKEN }}
+          package-name: ${{ env.REPOSITORY_NAME }}
+          package-type: container
+          min-versions-to-keep: 1
