@@ -65,4 +65,4 @@ jobs:
         with:
           package-name: ${{ env.REPOSITORY_NAME }}
           package-type: container
-          min-versions-to-keep: 1
+          min-versions-to-keep: 3
