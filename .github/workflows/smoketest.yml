@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: sever-sever/vyos-build
-          ref: T8065
+          ref: T8065-v2
           path: vyos-build
 
       # Allow AMA Serial
