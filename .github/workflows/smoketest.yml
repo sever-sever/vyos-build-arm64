@@ -53,7 +53,8 @@ jobs:
       - name: Build VyOS image
         working-directory: vyos-build
         run: |
-          ./build-vyos-image --architecture arm64 generic-arm64
+          # ./build-vyos-image --architecture arm64 generic-arm64
+          ./build-vyos-image --architecture arm64 generic
 
       - name: Check .iso file
         working-directory: vyos-build
