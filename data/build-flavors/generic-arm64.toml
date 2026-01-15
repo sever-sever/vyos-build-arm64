@@ -3,8 +3,7 @@
 image_format = "iso"
 
 [[includes_chroot]]
-  # path = "opt/vyatta/etc/config.boot.default"
-  path = "opt/vyatta/etc/config/config.boot"
+  path = "opt/vyatta/etc/config.boot.default"
   data = '''
 interfaces {
     loopback lo {
