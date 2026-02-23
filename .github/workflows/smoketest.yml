@@ -27,7 +27,7 @@ jobs:
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
         with:
-          repository: sever-sever/vyos-build
+          repository: vyos/vyos-build
           ref: current
           path: vyos-build
 
