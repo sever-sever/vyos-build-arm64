@@ -24,7 +24,7 @@ jobs:
         with:
           repository: sever-sever/vyos-build
           # ref: T8065
-          ref: T8065-v2
+          ref: current
           fetch-depth: 1
 
       # - name: Set up QEMU
