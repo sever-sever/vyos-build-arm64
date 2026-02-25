@@ -32,19 +32,19 @@ jobs:
           path: vyos-build
 
       # Allow AMA Serial
-      - name: Checkout vyos-1x repo
-        working-directory: vyos-build/scripts/package-build/vyos-1x
-        run: |
-          git clone -b T8120 --single-branch https://github.com/sever-sever/vyos-1x.git
-          # git clone -b T8120-v2 --single-branch https://github.com/sever-sever/vyos-1x.git
-          cd vyos-1x
-          dpkg-buildpackage -us -uc -b
-          cp ../*.deb ../../../../packages/
+      # - name: Checkout vyos-1x repo
+      #   working-directory: vyos-build/scripts/package-build/vyos-1x
+      #   run: |
+      #     git clone -b T8120 --single-branch https://github.com/sever-sever/vyos-1x.git
+      #     # git clone -b T8120-v2 --single-branch https://github.com/sever-sever/vyos-1x.git
+      #     cd vyos-1x
+      #     dpkg-buildpackage -us -uc -b
+      #     cp ../*.deb ../../../../packages/
 
-      - name: Check vyos-1x binaries
-        working-directory: vyos-build
-        run: |
-          ls -lah packages
+      # - name: Check vyos-1x binaries
+      #   working-directory: vyos-build
+      #   run: |
+      #     ls -lah packages
           
       - name: Copy flavors to vyos-build
         run: |
