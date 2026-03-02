@@ -27,8 +27,10 @@ jobs:
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
         with:
-          repository: vyos/vyos-build
-          ref: current
+          # repository: vyos/vyos-build
+          # ref: current
+          repository: c-po/vyos-build
+          ref: per-arch-kernel-serial-interface
           path: vyos-build
 
       # Check grub fix for AMA
@@ -46,15 +48,15 @@ jobs:
         run: |
           ls -lah packages
           
-      - name: Copy flavors to vyos-build
-        run: |
-          rsync -avh vyos-build-arm64/data/build-flavors/ vyos-build/data/build-flavors/
+      # - name: Copy flavors to vyos-build
+      #   run: |
+      #     rsync -avh vyos-build-arm64/data/build-flavors/ vyos-build/data/build-flavors/
 
       - name: Build VyOS image
         working-directory: vyos-build
         run: |
-          ./build-vyos-image --architecture arm64 generic-arm64
-          # ./build-vyos-image --architecture arm64 generic
+          # ./build-vyos-image --architecture arm64 generic-arm64
+          ./build-vyos-image --architecture arm64 generic
 
       - name: Check .iso file
         working-directory: vyos-build
