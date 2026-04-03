@@ -27,10 +27,10 @@ jobs:
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
         with:
-          repository: vyos/vyos-build
-          ref: current
-          # repository: c-po/vyos-build
-          # ref: per-arch-kernel-serial-interface
+          # repository: vyos/vyos-build
+          # ref: current
+          repository: c-po/vyos-build
+          ref: kernel-serial-activation
           path: vyos-build
 
       # Check grub fix for AMA
