@@ -27,18 +27,19 @@ jobs:
       - name: Checkout vyos-build repo
         uses: actions/checkout@v6
         with:
-          # repository: vyos/vyos-build
-          # ref: current
-          repository: c-po/vyos-build
-          ref: kernel-serial-activation
-          path: vyos-build
+          repository: vyos/vyos-build
+          ref: current
+          # repository: c-po/vyos-build
+          # ref: kernel-serial-activation
+          # path: vyos-build
 
       # Check grub fix for AMA
       - name: Checkout vyos-1x repo
         working-directory: vyos-build/scripts/package-build/vyos-1x
         run: |
           # git clone -b T8120-current --single-branch https://github.com/sever-sever/vyos-1x.git
-          git clone -b kernel-serial-activation --single-branch https://github.com/c-po/vyos-1x.git
+          # git clone -b kernel-serial-activation --single-branch https://github.com/c-po/vyos-1x.git
+          git clone -b current --single-branch https://github.com/vyos/vyos-1x.git
           cd vyos-1x
           dpkg-buildpackage -us -uc -b
           cp ../*.deb ../../../../packages/
