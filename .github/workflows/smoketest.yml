@@ -35,18 +35,18 @@ jobs:
           # path: vyos-build
 
       # Check grub fix for AMA
-      - name: Checkout vyos-1x repo
-        working-directory: vyos-build/scripts/package-build/vyos-1x
-        run: |
-          git clone -b current --single-branch https://github.com/vyos/vyos-1x.git
-          cd vyos-1x
-          dpkg-buildpackage -us -uc -b
-          cp ../*.deb ../../../../packages/
+      # - name: Checkout vyos-1x repo
+      #   working-directory: vyos-build/scripts/package-build/vyos-1x
+      #   run: |
+      #     git clone -b current --single-branch https://github.com/vyos/vyos-1x.git
+      #     cd vyos-1x
+      #     dpkg-buildpackage -us -uc -b
+      #     cp ../*.deb ../../../../packages/
 
-      - name: Check vyos-1x binaries
-        working-directory: vyos-build
-        run: |
-          ls -lah packages
+      # - name: Check vyos-1x binaries
+      #   working-directory: vyos-build
+      #   run: |
+      #     ls -lah packages
           
       # - name: Copy flavors to vyos-build
       #   run: |
