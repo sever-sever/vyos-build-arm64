@@ -6,7 +6,7 @@ on:
 env:
   ARCH: arm64
   REGISTRY: ghcr.io
-  IMAGE_NAME: vyos-current-arm64
+  IMAGE_NAME: vyos-rolling-arm64
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: vyos/vyos-build
-          ref: current
+          ref: rolling
           path: vyos-build
           # repository: c-po/vyos-build
           # ref: kernel-serial-activation
